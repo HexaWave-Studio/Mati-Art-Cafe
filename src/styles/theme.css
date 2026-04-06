@@ -143,8 +143,15 @@
   * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
   */
 
+  /* Hidden system scrollbar for maximum immersion */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   html {
     font-size: var(--font-size);
+    /* Hidden system scrollbar for Firefox */
+    scrollbar-width: none;
   }
 
   h1 {

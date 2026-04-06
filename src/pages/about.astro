@@ -1,0 +1,19 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import AboutComponent from '@/components/pages/About';
+import { SITE } from '@/lib/site';
+---
+
+<Layout 
+  title="About Maati Art Cafe | Brooklyn Coffee, Ceramics & Craft Story"
+  description="Discover the story behind Maati Art Cafe, where Brooklyn coffee culture meets handcrafted ceramics, thoughtful roasting, and slow cafe rituals."
+  image={SITE.defaultImage}
+  pageName="About"
+  schemaType="AboutPage"
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
+  ]}
+>
+  <AboutComponent client:load />
+</Layout>

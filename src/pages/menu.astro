@@ -1,0 +1,48 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import MenuComponent from '@/components/pages/Menu';
+import { menuData } from '@/lib/menu-data';
+import { SITE, toAbsoluteUrl } from '@/lib/site';
+
+const menuSections = [...new Set(menuData.map((item) => item.category))].map((category) => ({
+  '@type': 'MenuSection',
+  name: category,
+  hasMenuItem: menuData
+    .filter((item) => item.category === category)
+    .map((item) => ({
+      '@type': 'MenuItem',
+      name: item.name,
+      description: item.description,
+      image: item.image,
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'USD',
+        price: item.price.replace('$', ''),
+      },
+    })),
+}));
+
+const menuSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  '@id': `${toAbsoluteUrl('/menu')}#menu`,
+  name: `${SITE.name} Menu`,
+  description: 'Signature coffee, breakfast, desserts, and cafe favorites served at Maati Art Cafe in Brooklyn.',
+  hasMenuSection: menuSections,
+  url: toAbsoluteUrl('/menu'),
+};
+---
+
+<Layout 
+  title="Coffee Menu | Signature Drinks, Pastries & Breakfast in Brooklyn | Maati Art Cafe"
+  description="Explore Maati Art Cafe's coffee menu with espresso drinks, cold brews, pastries, breakfast favorites, and handcrafted desserts in Brooklyn."
+  image={SITE.defaultImage}
+  pageName="Menu"
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Menu', path: '/menu' },
+  ]}
+  structuredData={menuSchema}
+>
+  <MenuComponent client:idle />
+</Layout>

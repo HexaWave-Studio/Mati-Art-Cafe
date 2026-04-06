@@ -1,0 +1,16 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Home from '@/components/pages/Home';
+import LoadingScreen from '@/components/LoadingScreen';
+import { SITE } from '@/lib/site';
+---
+
+<Layout
+  title={SITE.defaultTitle}
+  description={SITE.description}
+  image={SITE.defaultImage}
+  pageName="Home"
+>
+  <LoadingScreen client:load />
+  <Home client:load />
+</Layout>

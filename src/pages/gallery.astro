@@ -1,0 +1,19 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import GalleryComponent from '@/components/pages/Gallery';
+import { SITE } from '@/lib/site';
+---
+
+<Layout 
+  title="Cafe Gallery | Interiors, Coffee Moments & Desserts | Maati Art Cafe"
+  description="Browse the Maati Art Cafe gallery for warm interiors, coffee moments, plated desserts, and the gallery-like atmosphere that defines our Brooklyn cafe."
+  image={SITE.defaultImage}
+  pageName="Gallery"
+  schemaType="CollectionPage"
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Gallery', path: '/gallery' },
+  ]}
+>
+  <GalleryComponent client:load />
+</Layout>

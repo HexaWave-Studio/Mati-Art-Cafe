@@ -1,0 +1,160 @@
+---
+import '@/styles/globals.css';
+import '@/styles/index.css';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+import CursorFollow from '@/components/CursorFollow';
+import ScrollProgress from '@/components/ScrollProgress';
+import { SITE, buildSchemas, toAbsoluteUrl } from '@/lib/site';
+
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  pageName?: string;
+  schemaType?: string;
+  breadcrumbs?: { name: string; path: string }[];
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
+}
+
+const { 
+  title = SITE.defaultTitle,
+  description = SITE.description,
+  image = SITE.defaultImage,
+  pageName = Astro.url.pathname === '/' ? 'Home' : SITE.name,
+  schemaType = 'WebPage',
+  breadcrumbs,
+  structuredData = [],
+  noindex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || SITE.url).toString();
+const resolvedImage = toAbsoluteUrl(image);
+const robotsContent = noindex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+
+const schema = [
+  ...buildSchemas({
+    canonicalUrl: canonicalURL,
+    description,
+    image: resolvedImage,
+    pageName,
+    pathname: Astro.url.pathname,
+    schemaType,
+    breadcrumbs,
+  }),
+  ...(Array.isArray(structuredData) ? structuredData : [structuredData]),
+].filter(Boolean);
+---
+
+<!DOCTYPE html>
+<html lang={SITE.language}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.name} />
+    <meta name="application-name" content={SITE.name} />
+    <meta name="theme-color" content="#faf7f2" />
+    <meta name="robots" content={robotsContent} />
+    <meta name="googlebot" content={robotsContent} />
+    
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang={SITE.language} href={canonicalURL} />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={resolvedImage} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={resolvedImage} />
+
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    {schema.map((entry) => (
+      <script type="application/ld+json" set:html={JSON.stringify(entry).replace(/</g, '\\u003c')} />
+    ))}
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen bg-[var(--cream)]">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-[var(--espresso)] focus:px-5 focus:py-3 focus:text-[var(--cream)]"
+    >
+      Skip to content
+    </a>
+    <CursorFollow client:load transition:persist />
+    <ScrollProgress client:load />
+    <Navigation client:load transition:persist />
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer id="main-footer" class="relative z-[60] bg-[var(--espresso)]">
+      <Footer client:visible transition:persist />
+    </footer>
+
+    <script is:inline>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.documentElement.style.setProperty('--nav-y', '-100px');
+          } else {
+            document.documentElement.style.setProperty('--nav-y', '0px');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      function init() {
+        const footer = document.querySelector('#main-footer');
+        if (footer) observer.observe(footer);
+      }
+
+      init();
+      document.addEventListener('astro:after-swap', init);
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --cream: #faf7f2;
+  }
+  
+  @media (min-width: 768px) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+  }
+
+  body {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  img {
+    user-drag: none;
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+
+  a img, button img, .pointer-events-auto img {
+    pointer-events: auto;
+  }
+</style>
