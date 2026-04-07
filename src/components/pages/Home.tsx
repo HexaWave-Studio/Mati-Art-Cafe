@@ -179,7 +179,7 @@ export default function Home() {
           >
             <div className="absolute inset-0 z-10 bg-gradient-to-b from-[var(--espresso)]/80 via-[var(--coffee-dark)]/60 to-[var(--espresso)]/90" />
             <ImageWithFallback
-              src="public\hero.png"
+              src="hero.png"
               alt="Maati Art Cafe interior with coffee service and warm lighting"
               className="h-full w-full object-cover"
               loading="eager"
