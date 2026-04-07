@@ -5,6 +5,7 @@ export default function CursorFollow() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const [isHovering, setIsHovering] = useState(false);
+  const [isHiddenZone, setIsHiddenZone] = useState(false);
 
   const springConfig = { damping: 25, stiffness: 700 };
   const cursorXSpring = useSpring(cursorX, springConfig);
@@ -12,6 +13,12 @@ export default function CursorFollow() {
 
   useEffect(() => {
     const moveCursor = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      const isInsideHiddenZone = Boolean(
+        target?.closest("[data-hide-custom-cursor='true']"),
+      );
+
+      setIsHiddenZone(isInsideHiddenZone);
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
     };
@@ -30,11 +37,15 @@ export default function CursorFollow() {
         target.closest(".cursor-pointer")
       ) {
         setIsHovering(true);
+        return;
       }
+
+      setIsHovering(false);
     };
 
     const handleMouseLeave = () => {
       setIsHovering(false);
+      setIsHiddenZone(false);
     };
 
     window.addEventListener("mousemove", moveCursor);
@@ -58,9 +69,10 @@ export default function CursorFollow() {
           top: cursorYSpring,
         }}
         animate={{
+          opacity: isHiddenZone ? 0 : isHovering ? 0.4 : 0.3,
           width: isHovering ? 64 : 32,
           height: isHovering ? 64 : 32,
-          opacity: isHovering ? 0.4 : 0.3,
+          scale: isHiddenZone ? 0.6 : 1,
         }}
       >
         <div
@@ -80,9 +92,10 @@ export default function CursorFollow() {
           borderColor: "var(--caramel)",
         }}
         animate={{
+          opacity: isHiddenZone ? 0 : isHovering ? 0.8 : 0.6,
           width: isHovering ? 40 : 24,
           height: isHovering ? 40 : 24,
-          opacity: isHovering ? 0.8 : 0.6,
+          scale: isHiddenZone ? 0.6 : 1,
         }}
       />
 
@@ -97,6 +110,7 @@ export default function CursorFollow() {
           background: "var(--cream)",
         }}
         animate={{
+          opacity: isHiddenZone ? 0 : 1,
           width: isHovering ? 8 : 4,
           height: isHovering ? 8 : 4,
         }}

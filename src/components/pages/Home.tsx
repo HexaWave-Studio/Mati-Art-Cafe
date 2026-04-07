@@ -179,7 +179,7 @@ export default function Home() {
           >
             <div className="absolute inset-0 z-10 bg-gradient-to-b from-[var(--espresso)]/80 via-[var(--coffee-dark)]/60 to-[var(--espresso)]/90" />
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1751956066306-c5684cbcf385?w=1920"
+              src="public\hero.png"
               alt="Maati Art Cafe interior with coffee service and warm lighting"
               className="h-full w-full object-cover"
               loading="eager"
@@ -244,8 +244,8 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto mb-12 max-w-3xl text-xl leading-relaxed text-[var(--latte)] md:text-2xl">
-              Where artisan coffee, handcrafted ceramics, and gallery-inspired interiors come
-              together in the heart of Brooklyn.
+              Where artisan coffee, handcrafted ceramics, and gallery-inspired
+              interiors come together in the heart of Brooklyn.
             </p>
 
             <div className="flex flex-wrap justify-center gap-6">
@@ -285,7 +285,10 @@ export default function Home() {
               transition={{ duration: 2, repeat: Infinity }}
               className="mt-16 flex w-full justify-center"
             >
-              <ChevronDown className="text-[var(--caramel)] drop-shadow-lg" size={48} />
+              <ChevronDown
+                className="text-[var(--caramel)] drop-shadow-lg"
+                size={48}
+              />
             </motion.div>
           </motion.div>
         </div>
@@ -323,8 +326,8 @@ export default function Home() {
               Our Menu
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-[var(--coffee-light)]">
-              Every item is crafted with quality ingredients, expressive plating, and the warmth
-              of a neighborhood cafe.
+              Every item is crafted with quality ingredients, expressive
+              plating, and the warmth of a neighborhood cafe.
             </p>
           </div>
 
@@ -373,11 +376,15 @@ export default function Home() {
 
                 <div className="absolute bottom-0 left-0 right-0 translate-y-20 p-6 text-white transition-transform duration-500 group-hover:translate-y-0">
                   <h3 className="mb-3 font-serif text-3xl">{item.title}</h3>
-                  <p className="text-sm text-[var(--latte)] opacity-90">{item.description}</p>
+                  <p className="text-sm text-[var(--latte)] opacity-90">
+                    {item.description}
+                  </p>
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 transition-opacity duration-300 group-hover:opacity-0">
-                  <h3 className="font-serif text-2xl text-[var(--espresso)]">{item.title}</h3>
+                  <h3 className="font-serif text-2xl text-[var(--espresso)]">
+                    {item.title}
+                  </h3>
                 </div>
 
                 <motion.div className="absolute -inset-1 -z-10 rounded-3xl bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-40" />
@@ -436,8 +443,8 @@ export default function Home() {
               Signature Creations
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-[var(--latte)]">
-              Handcrafted coffee and cafe creations that pair beautifully with Maati&apos;s
-              ceramic-led presentation.
+              Handcrafted coffee and cafe creations that pair beautifully with
+              Maati&apos;s ceramic-led presentation.
             </p>
           </div>
 
@@ -480,9 +487,15 @@ export default function Home() {
                     }}
                   />
 
-                  <h3 className="mb-2 font-serif text-2xl text-[var(--cream)]">{drink.name}</h3>
-                  <p className="mb-4 text-sm text-[var(--latte)]">{drink.description}</p>
-                  <p className="text-2xl text-[var(--caramel)]">{drink.price}</p>
+                  <h3 className="mb-2 font-serif text-2xl text-[var(--cream)]">
+                    {drink.name}
+                  </h3>
+                  <p className="mb-4 text-sm text-[var(--latte)]">
+                    {drink.description}
+                  </p>
+                  <p className="text-2xl text-[var(--caramel)]">
+                    {drink.price}
+                  </p>
                 </div>
 
                 <motion.div className="absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-r from-[var(--caramel)] via-[var(--latte)] to-[var(--mocha)] opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-50" />
@@ -524,8 +537,8 @@ export default function Home() {
               Ambience
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-[var(--latte)]">
-              Browse the warm interiors, plated desserts, and coffee moments that shape the
-              gallery-inspired feel of Maati Art Cafe.
+              Browse the warm interiors, plated desserts, and coffee moments
+              that shape the gallery-inspired feel of Maati Art Cafe.
             </p>
           </div>
 
@@ -610,7 +623,10 @@ export default function Home() {
                       transition={{ delay: index * 0.2 + i * 0.1 }}
                       viewport={{ once: true }}
                     >
-                      <Star className="fill-[var(--caramel)] text-[var(--caramel)]" size={20} />
+                      <Star
+                        className="fill-[var(--caramel)] text-[var(--caramel)]"
+                        size={20}
+                      />
                     </motion.div>
                   ))}
                 </div>
@@ -629,77 +645,183 @@ export default function Home() {
         </motion.div>
       </motion.section>
 
-      <section
-        id="visit"
-        className="relative z-50 flex min-h-[50vh] flex-col justify-center bg-gradient-to-b from-[var(--espresso)] to-[var(--coffee-dark)] px-4 py-16 lg:py-24"
-        aria-labelledby="visit-us-title"
-      >
+      {/* Location Section - Enhanced */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[var(--espresso)] via-[var(--coffee-dark)] to-[var(--espresso)] px-6 pb-24 pt-32 z-40 md:pb-32">
+        {/* Decorative elements */}
+        <motion.div
+          className="absolute top-10 left-10 w-32 h-32 bg-[var(--caramel)] rounded-full opacity-5 blur-3xl"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-20 right-20 w-40 h-40 bg-[var(--latte)] rounded-full opacity-5 blur-3xl"
+          animate={{ scale: [1.2, 1, 1.2] }}
+          transition={{ duration: 10, repeat: Infinity }}
+        />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-[var(--coffee-dark)]/55 to-[var(--espresso)] md:h-40" />
+
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mx-auto w-full max-w-7xl origin-center scale-90 text-center"
+          className="max-w-5xl mx-auto relative z-10"
         >
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ scale: 0, rotate: -180 }}
+              whileInView={{ scale: 1, rotate: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="inline-block mb-8"
+            >
+              <MapPin className="mx-auto text-[var(--caramel)]" size={64} />
+            </motion.div>
+
+            <h2 className="font-serif text-5xl md:text-6xl text-[var(--cream)] mb-6">
+              Visit Our Café
+            </h2>
+            <p className="text-[var(--latte)] text-lg mb-4">
+              123 Coffee Street, Brooklyn, NY 11201
+            </p>
+            <p className="text-[var(--caramel)] text-sm tracking-wider uppercase">
+              Open Daily | 7:00 AM - 9:00 PM
+            </p>
+          </div>
+
           <motion.div
-            initial={{ scale: 0, rotate: -180 }}
-            whileInView={{ scale: 1, rotate: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="mb-8 inline-block"
+            className="backdrop-blur-xl bg-white/10 p-8 rounded-3xl border border-[var(--caramel)]/30 mb-12"
           >
-            <MapPin className="mx-auto text-[var(--caramel)]" size={64} />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+              {[
+                { label: "Monday - Friday", value: "7:00 AM - 9:00 PM" },
+                { label: "Saturday", value: "8:00 AM - 10:00 PM" },
+                { label: "Sunday", value: "8:00 AM - 8:00 PM" },
+              ].map((hours, index) => (
+                <motion.div
+                  key={hours.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <p className="text-[var(--latte)] text-sm uppercase tracking-wider mb-2">
+                    {hours.label}
+                  </p>
+                  <p className="text-[var(--cream)] text-lg font-serif">
+                    {hours.value}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="border-t border-[var(--caramel)]/30 pt-8">
+              <p className="text-[var(--latte)] text-center mb-4">
+                📞 (555) 123-4567
+              </p>
+              <p className="text-[var(--latte)] text-center">
+                ✉️ hello@cafenoir.com
+              </p>
+            </div>
           </motion.div>
 
-          <h2
-            id="visit-us-title"
-            className="mb-8 font-serif text-5xl text-[var(--cream)] md:text-6xl"
-          >
-            Visit Us
-          </h2>
-          <p className="mb-4 text-xl text-[var(--latte)]">{addressText}</p>
-          <p className="mx-auto mb-12 max-w-2xl text-base leading-relaxed text-[var(--latte)]/80 md:text-lg">
-            Stop by for small-batch coffee, handcrafted desserts, breakfast favorites, and a
-            gallery-inspired space built around ceramics and slow hospitality.
-          </p>
-
-          <div className="mb-10 flex flex-wrap justify-center gap-6 text-[var(--latte)]">
-            <a
-              href={SITE.phoneHref}
-              className="inline-flex items-center gap-2 transition-colors hover:text-[var(--cream)]"
-            >
-              <Phone size={18} />
-              <span>{SITE.phone}</span>
-            </a>
-            <a
-              href={`mailto:${SITE.email}`}
-              className="inline-flex items-center gap-2 transition-colors hover:text-[var(--cream)]"
-            >
-              <Mail size={18} />
-              <span>{SITE.email}</span>
-            </a>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex gap-6 justify-center flex-wrap">
             <motion.a
-              href={SITE.mapUrl}
+              href="https://maps.app.goo.gl/oFR8L1Mm8uqFAiLV9"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              viewport={{ once: true }}
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0 20px 60px rgba(212, 165, 116, 0.5)",
+              }}
               whileTap={{ scale: 0.95 }}
-              className="rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] px-10 py-4 text-white shadow-lg"
+              className="px-10 py-4 bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] text-white rounded-full shadow-lg font-medium"
             >
-              Get Directions
+              📍 Get Directions
             </motion.a>
-            <motion.a
-              href={SITE.reservationUrl}
-              whileHover={{ scale: 1.05 }}
+            <motion.button
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              viewport={{ once: true }}
+              whileHover={{
+                scale: 1.08,
+                backgroundColor: "rgba(255, 255, 255, 0.2)",
+              }}
               whileTap={{ scale: 0.95 }}
-              className="rounded-full border-2 border-[var(--cream)] bg-white/10 px-10 py-4 text-[var(--cream)] backdrop-blur-sm"
+              className="px-10 py-4 border-2 border-[var(--cream)] text-[var(--cream)] rounded-full backdrop-blur-sm bg-white/10 font-medium transition-colors"
             >
-              Reserve a Table
-            </motion.a>
+              📅 Reserve a Table
+            </motion.button>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            viewport={{ once: true }}
+            className="relative z-10 mt-24 border-t border-[var(--caramel)]/20 pt-20 text-center md:mt-28 md:pt-24"
+          >
+            <motion.div
+              className="absolute right-0 top-0 h-80 w-80 rounded-full bg-[var(--caramel)] opacity-10 blur-3xl"
+              animate={{ y: [0, 40, 0], x: [0, 20, 0] }}
+              transition={{ duration: 8, repeat: Infinity }}
+            />
+            <motion.div
+              className="absolute bottom-0 left-0 h-72 w-72 rounded-full bg-[var(--latte)] opacity-10 blur-3xl"
+              animate={{ y: [0, -30, 0], x: [0, 30, 0] }}
+              transition={{ duration: 10, repeat: Infinity }}
+            />
+
+            <div className="relative mx-auto max-w-2xl">
+              <h2 className="mb-6 font-serif text-5xl text-[var(--cream)] md:text-6xl">
+                Stay Updated
+              </h2>
+              <p className="mb-12 text-lg text-[var(--latte)]">
+                Get exclusive offers, new drink recipes, and coffee tips
+                delivered to your inbox
+              </p>
+
+              <motion.form
+                onSubmit={(e) => e.preventDefault()}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="flex flex-col gap-3 rounded-[2rem] border border-[var(--caramel)]/30 bg-white/10 p-2 backdrop-blur-xl sm:flex-row sm:rounded-full"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  aria-label="Email address"
+                  placeholder="Enter your email"
+                  className="flex-1 bg-transparent px-6 py-3 text-[var(--cream)] outline-none placeholder:text-[var(--latte)]"
+                />
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="whitespace-nowrap rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] px-8 py-3 font-medium text-white shadow-lg transition-shadow hover:shadow-xl"
+                >
+                  Subscribe
+                </motion.button>
+              </motion.form>
+
+              <p className="mt-6 text-sm text-[var(--latte)]">
+                We respect your privacy. Unsubscribe at any time.
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </section>
     </div>

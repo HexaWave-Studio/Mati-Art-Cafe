@@ -35,7 +35,9 @@ export default function Menu() {
             className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--caramel)]/20 bg-[var(--mocha)]/10 px-6 py-3 backdrop-blur-sm"
           >
             <Sparkles className="text-[var(--caramel)]" size={20} />
-            <span className="text-sm tracking-wider text-[var(--mocha)]">CURATED SELECTIONS</span>
+            <span className="text-sm tracking-wider text-[var(--mocha)]">
+              CURATED SELECTIONS
+            </span>
           </motion.div>
 
           <motion.h1
@@ -54,8 +56,9 @@ export default function Menu() {
             transition={{ delay: 0.4 }}
             className="mx-auto max-w-3xl text-xl leading-relaxed text-[var(--coffee-light)]"
           >
-            Explore artisan coffee, espresso drinks, breakfast favorites, pastries, and desserts
-            served in handcrafted ceramics at Maati Art Cafe in Brooklyn.
+            Explore artisan coffee, espresso drinks, breakfast favorites,
+            pastries, and desserts served in handcrafted ceramics at Maati Art
+            Cafe in Brooklyn.
           </motion.p>
         </header>
 
@@ -159,7 +162,10 @@ export default function Menu() {
                         transition={{ duration: 0.6 }}
                         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                       >
-                        <Star className="fill-[var(--caramel)] text-[var(--caramel)]" size={48} />
+                        <Star
+                          className="fill-[var(--caramel)] text-[var(--caramel)]"
+                          size={48}
+                        />
                       </motion.div>
                     )}
 
@@ -235,19 +241,25 @@ export default function Menu() {
             />
 
             <div className="relative z-10">
-              <h2 id="menu-visit-title" className="mb-6 font-serif text-4xl text-[var(--cream)]">
+              <h2
+                id="menu-visit-title"
+                className="mb-6 font-serif text-4xl text-[var(--cream)]"
+              >
                 Can&apos;t Decide?
               </h2>
               <p className="mx-auto mb-8 max-w-2xl text-lg text-[var(--latte)]">
-                Let our baristas guide you to the right roast, drink, or dessert pairing when you
-                visit Maati Art Cafe.
+                Let our baristas guide you to the right roast, drink, or dessert
+                pairing when you visit Maati Art Cafe.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <motion.a
                   href={SITE.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.08, boxShadow: "0 20px 60px rgba(212, 165, 116, 0.4)" }}
+                  whileHover={{
+                    scale: 1.08,
+                    boxShadow: "0 20px 60px rgba(212, 165, 116, 0.4)",
+                  }}
                   whileTap={{ scale: 0.95 }}
                   className="rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--latte)] px-12 py-5 text-lg font-medium text-[var(--espresso)] shadow-2xl"
                 >
