@@ -130,7 +130,10 @@ export default function Gallery() {
   ];
 
   return (
-    <div ref={containerRef} className="relative min-h-screen overflow-hidden px-6 pb-20 pt-24">
+    <div
+      ref={containerRef}
+      className="relative min-h-screen overflow-hidden px-4 pb-16 pt-20 sm:px-6 sm:pb-20 sm:pt-24"
+    >
       <FloatingParticles />
 
       <motion.div
@@ -149,22 +152,24 @@ export default function Gallery() {
         style={{ y: headerY, opacity: headerOpacity }}
         className="relative z-10 mx-auto max-w-7xl"
       >
-        <div className="mb-16 text-center">
+        <div className="mb-12 text-center sm:mb-16">
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-[var(--caramel)]/30 bg-white/10 px-6 py-3 backdrop-blur-md"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--caramel)]/30 bg-white/10 px-4 py-2.5 backdrop-blur-md sm:mb-8 sm:px-6 sm:py-3"
           >
             <Sparkles className="text-[var(--caramel)]" size={20} />
-            <span className="text-sm tracking-wider text-[var(--caramel)]">VISUAL STORIES</span>
+            <span className="text-xs tracking-[0.2em] text-[var(--caramel)] sm:text-sm sm:tracking-wider">
+              VISUAL STORIES
+            </span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mb-6 font-serif text-6xl text-[var(--cream)] md:text-7xl"
+            className="mb-4 font-serif text-5xl text-[var(--cream)] sm:mb-6 sm:text-6xl md:text-7xl"
           >
             Gallery
           </motion.h1>
@@ -173,20 +178,23 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mx-auto max-w-3xl text-xl leading-relaxed text-[var(--latte)]"
+            className="mx-auto max-w-3xl text-lg leading-relaxed text-[var(--latte)] sm:text-xl"
           >
-            Explore the interiors, coffee craft, plated desserts, and visual details that give
-            Maati Art Cafe its gallery-like personality.
+            Explore the interiors, coffee craft, plated desserts, and visual
+            details that give Maati Art Cafe its gallery-like personality.
           </motion.p>
         </div>
       </motion.header>
 
       <main className="relative z-10 mx-auto max-w-7xl">
-        <section aria-labelledby="gallery-filters-title" className="mb-16">
+        <section
+          aria-labelledby="gallery-filters-title"
+          className="mb-12 sm:mb-16"
+        >
           <h2 id="gallery-filters-title" className="sr-only">
             Gallery filters
           </h2>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {categories.map((cat, index) => (
               <motion.button
                 key={cat.id}
@@ -196,7 +204,7 @@ export default function Gallery() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.08, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className={`relative rounded-full px-8 py-4 transition-all ${
+                className={`relative rounded-full px-6 py-3 transition-all sm:px-8 sm:py-4 ${
                   filter === cat.id
                     ? "text-[var(--espresso)] shadow-2xl"
                     : "bg-white/10 text-[var(--cream)] backdrop-blur-sm hover:bg-white/20"
@@ -228,7 +236,9 @@ export default function Gallery() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+              <ResponsiveMasonry
+                columnsCountBreakPoints={{ 0: 1, 640: 2, 960: 3 }}
+              >
                 <Masonry gutter="24px">
                   {filteredImages.map((image, index) => (
                     <motion.figure
@@ -245,7 +255,11 @@ export default function Gallery() {
                       onClick={() => setSelectedImage(index)}
                       className="group relative cursor-pointer overflow-hidden rounded-2xl"
                     >
-                      <ImageWithFallback src={image.url} alt={image.alt} className="h-auto w-full" />
+                      <ImageWithFallback
+                        src={image.url}
+                        alt={image.alt}
+                        className="h-auto w-full"
+                      />
 
                       <motion.figcaption
                         initial={{ opacity: 0 }}
@@ -299,15 +313,19 @@ export default function Gallery() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-32"
+          className="mt-20 sm:mt-32"
           aria-labelledby="gallery-story-title"
         >
           <div className="mb-16 text-center">
-            <h2 id="gallery-story-title" className="mb-6 font-serif text-5xl text-[var(--cream)]">
+            <h2
+              id="gallery-story-title"
+              className="mb-4 font-serif text-4xl text-[var(--cream)] sm:mb-6 sm:text-5xl"
+            >
               Experience Our Story
             </h2>
-            <p className="text-lg text-[var(--latte)]">
-              Behind-the-scenes moments that capture our coffee craft and visual atmosphere
+            <p className="text-base text-[var(--latte)] sm:text-lg">
+              Behind-the-scenes moments that capture our coffee craft and visual
+              atmosphere
             </p>
           </div>
 
@@ -315,12 +333,14 @@ export default function Gallery() {
             {[
               {
                 title: "The Art of Brewing",
-                thumbnail: "https://images.unsplash.com/photo-1758845078572-36586c19f73a?w=800",
+                thumbnail:
+                  "https://images.unsplash.com/photo-1758845078572-36586c19f73a?w=800",
                 alt: "Barista coffee brewing process at Maati Art Cafe",
               },
               {
                 title: "Behind the Scenes",
-                thumbnail: "https://images.unsplash.com/photo-1762657424841-7b5166d5d54c?w=800",
+                thumbnail:
+                  "https://images.unsplash.com/photo-1762657424841-7b5166d5d54c?w=800",
                 alt: "Behind the scenes preparation inside the cafe",
               },
             ].map((story, index) => (
@@ -344,9 +364,13 @@ export default function Gallery() {
                 />
 
                 <div className="absolute inset-0 flex items-center justify-center bg-black/40 transition-all group-hover:bg-black/20">
-                  <motion.div whileHover={{ scale: 1.3 }} whileTap={{ scale: 0.9 }} className="relative">
-                    <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[var(--caramel)] to-[var(--mocha)] shadow-2xl">
-                      <Play className="ml-1 text-white" size={32} />
+                  <motion.div
+                    whileHover={{ scale: 1.3 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="relative"
+                  >
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[var(--caramel)] to-[var(--mocha)] shadow-2xl sm:h-20 sm:w-20">
+                      <Play className="ml-1 text-white" size={24} />
                     </div>
                     <motion.div
                       animate={{
@@ -362,9 +386,11 @@ export default function Gallery() {
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
                   whileHover={{ y: 0, opacity: 1 }}
-                  className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--espresso)] to-transparent p-8"
+                  className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--espresso)] to-transparent p-6 sm:p-8"
                 >
-                  <h3 className="font-serif text-3xl text-white">{story.title}</h3>
+                  <h3 className="font-serif text-2xl text-white sm:text-3xl">
+                    {story.title}
+                  </h3>
                 </motion.div>
               </motion.article>
             ))}
@@ -379,17 +405,17 @@ export default function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/96 p-6 backdrop-blur-xl"
+            className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/96 p-4 backdrop-blur-xl sm:p-6"
           >
             <motion.button
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               whileHover={{ scale: 1.2, rotate: 90 }}
               onClick={() => setSelectedImage(null)}
-              className="absolute right-8 top-8 z-20 flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-sm"
+              className="absolute right-4 top-4 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-sm sm:right-8 sm:top-8 sm:h-14 sm:w-14"
               aria-label="Close image viewer"
             >
-              <X size={28} />
+              <X size={24} />
             </motion.button>
 
             <motion.div
@@ -398,7 +424,7 @@ export default function Gallery() {
               exit={{ scale: 0.8, opacity: 0, rotateY: 30 }}
               transition={{ type: "spring", damping: 25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-h-[90vh] max-w-6xl cursor-default"
+              className="relative max-h-[90vh] max-w-5xl cursor-default sm:max-w-6xl"
             >
               <ImageWithFallback
                 src={filteredImages[selectedImage].url}
@@ -410,17 +436,17 @@ export default function Gallery() {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="absolute bottom-0 left-0 right-0 rounded-b-3xl bg-gradient-to-t from-black/90 to-transparent p-8"
+                className="absolute bottom-0 left-0 right-0 rounded-b-3xl bg-gradient-to-t from-black/90 to-transparent p-5 sm:p-8"
               >
-                <h3 className="mb-3 font-serif text-4xl text-white">
+                <h3 className="mb-2 font-serif text-2xl text-white sm:mb-3 sm:text-4xl">
                   {filteredImages[selectedImage].title}
                 </h3>
-                <p className="text-lg uppercase tracking-wider text-[var(--caramel)]">
+                <p className="text-sm uppercase tracking-wider text-[var(--caramel)] sm:text-lg">
                   {filteredImages[selectedImage].category}
                 </p>
               </motion.div>
 
-              <div className="pointer-events-none absolute left-0 right-0 top-1/2 flex -translate-y-1/2 justify-between px-6">
+              <div className="pointer-events-none absolute left-0 right-0 top-1/2 flex -translate-y-1/2 justify-between px-3 sm:px-6">
                 {selectedImage > 0 && (
                   <motion.button
                     initial={{ x: -50, opacity: 0 }}
@@ -431,7 +457,7 @@ export default function Gallery() {
                       e.stopPropagation();
                       setSelectedImage(selectedImage - 1);
                     }}
-                    className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur-md"
+                    className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur-md sm:h-14 sm:w-14"
                     aria-label="View previous gallery image"
                   >
                     <span className="text-2xl">←</span>
@@ -448,7 +474,7 @@ export default function Gallery() {
                       e.stopPropagation();
                       setSelectedImage(selectedImage + 1);
                     }}
-                    className="pointer-events-auto ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur-md"
+                    className="pointer-events-auto ml-auto flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-lg backdrop-blur-md sm:h-14 sm:w-14"
                     aria-label="View next gallery image"
                   >
                     <span className="text-2xl">→</span>

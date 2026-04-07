@@ -17,13 +17,13 @@ export default function LoadingScreen() {
     document.body.style.touchAction = "none";
 
     // Phase timeline
-    const t1 = setTimeout(() => setPhase("reveal"), 900);   // drop lands → text appears
-    const t2 = setTimeout(() => setPhase("exit"), 3000);    // hold brand → begin exit
+    const t1 = setTimeout(() => setPhase("reveal"), 900); // drop lands → text appears
+    const t2 = setTimeout(() => setPhase("exit"), 3000); // hold brand → begin exit
     const t3 = setTimeout(() => {
       setIsVisible(false);
       document.body.style.overflow = "";
       document.body.style.touchAction = "";
-    }, 3700);                                                 // fully gone
+    }, 3700); // fully gone
 
     return () => {
       clearTimeout(t1);
@@ -42,7 +42,7 @@ export default function LoadingScreen() {
           initial={{ opacity: 1 }}
           exit={{ clipPath: "ellipse(0% 0% at 50% 50%)", opacity: 0 }}
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[200] flex flex-col items-center justify-center overflow-hidden select-none"
+          className="fixed inset-0 z-[200] flex select-none flex-col items-center justify-center overflow-hidden px-4"
           style={{
             background:
               "radial-gradient(ellipse 80% 80% at 50% 60%, #3d2415 0%, #1a0c07 55%, #0a0604 100%)",
@@ -68,8 +68,8 @@ export default function LoadingScreen() {
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             className="absolute rounded-full pointer-events-none"
             style={{
-              width: "480px",
-              height: "480px",
+              width: "min(72vw, 480px)",
+              height: "min(72vw, 480px)",
               background:
                 "radial-gradient(circle, rgba(212,165,116,0.18) 0%, transparent 70%)",
             }}
@@ -90,7 +90,12 @@ export default function LoadingScreen() {
                   ? { scale: [1, 1.3, 1], opacity: [0.6, 0.9, 0.6] }
                   : { scale: 1, opacity: 0 }
               }
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.2,
+              }}
               className="absolute inset-0 rounded-full blur-2xl"
               style={{
                 background:
@@ -103,7 +108,7 @@ export default function LoadingScreen() {
             <motion.img
               src="/logo.png"
               alt="Maati Art Cafe"
-              className="relative w-28 h-28 object-contain drop-shadow-2xl"
+              className="relative h-20 w-20 object-contain drop-shadow-2xl sm:h-24 sm:w-24 md:h-28 md:w-28"
               animate={
                 phase === "intro"
                   ? { y: [0, -18, 0, -8, 0], rotate: [0, -4, 4, -2, 0] }
@@ -130,7 +135,7 @@ export default function LoadingScreen() {
           </motion.div>
 
           {/* ── Brand name letter-stagger ── */}
-          <div className="flex items-center gap-0 overflow-hidden">
+          <div className="flex items-center gap-0 overflow-hidden px-2 text-center">
             {BRAND_LETTERS.map((char, i) => (
               <motion.span
                 key={i}
@@ -143,7 +148,7 @@ export default function LoadingScreen() {
                   delay: 0.05 * i,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className={`font-serif font-bold text-4xl md:text-5xl inline-block ${
+                className={`inline-block font-serif text-2xl font-bold sm:text-4xl md:text-5xl ${
                   char === " " ? "w-3" : ""
                 }`}
                 style={{
@@ -151,8 +156,8 @@ export default function LoadingScreen() {
                     char === " "
                       ? "transparent"
                       : i < 5
-                      ? "#faf7f2"         // MAATI → cream
-                      : "#D4A574",       // ART CAFÉ → caramel
+                        ? "#faf7f2" // MAATI → cream
+                        : "#D4A574", // ART CAFÉ → caramel
                   textShadow:
                     i >= 5 && char !== " "
                       ? "0 0 24px rgba(212,165,116,0.6)"
@@ -171,7 +176,7 @@ export default function LoadingScreen() {
             initial={{ opacity: 0, y: 10 }}
             animate={phase !== "intro" ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="mt-4 text-[var(--caramel)]/60 text-xs tracking-[0.45em] uppercase font-light"
+            className="mt-4 text-[10px] font-light uppercase tracking-[0.3em] text-[var(--caramel)]/60 sm:text-xs sm:tracking-[0.45em]"
           >
             Where art meets every cup
           </motion.p>
@@ -181,7 +186,7 @@ export default function LoadingScreen() {
             initial={{ opacity: 0, scaleX: 0 }}
             animate={phase !== "intro" ? { opacity: 1, scaleX: 1 } : {}}
             transition={{ duration: 1.2, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-10 w-48 h-[1px] rounded-full origin-left overflow-hidden relative"
+            className="relative mt-8 h-[1px] w-32 origin-left overflow-hidden rounded-full sm:mt-10 sm:w-48"
             style={{
               background:
                 "linear-gradient(90deg, transparent, var(--caramel), transparent)",
@@ -190,7 +195,12 @@ export default function LoadingScreen() {
             {/* Travelling shimmer */}
             <motion.div
               animate={{ x: ["-100%", "200%"] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              transition={{
+                duration: 1.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
               className="absolute inset-y-0 w-1/3 rounded-full"
               style={{
                 background:
@@ -211,7 +221,7 @@ export default function LoadingScreen() {
               initial={{ opacity: 0, scale: 0.7 }}
               animate={phase !== "intro" ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.8 + i * 0.05 }}
-              className={`absolute w-8 h-8 border-[var(--caramel)]/25 ${cls}`}
+              className={`absolute h-6 w-6 border-[var(--caramel)]/25 sm:h-8 sm:w-8 ${cls}`}
             />
           ))}
         </motion.div>

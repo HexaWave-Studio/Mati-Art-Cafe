@@ -4,12 +4,18 @@ import { SITE } from "@/lib/site";
 
 const MAP_EMBED_URL =
   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1733.5638962610908!2d88.4445318373069!3d22.97621246162201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89500540513a7%3A0x81bbbbeca398a97!2sMaati%20Art%20Cafe!5e0!3m2!1sen!2sin!4v1775545557321!5m2!1sen!2sin";
-const MAP_DIRECTIONS_URL = "https://www.google.com/maps?q=22.97621246162201,88.4445318373069";
+const MAP_DIRECTIONS_URL =
+  "https://www.google.com/maps?q=22.97621246162201,88.4445318373069";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const quickContactLinks = [
-    { href: MAP_DIRECTIONS_URL, label: "Get Directions", icon: MapPin, external: true },
+    {
+      href: MAP_DIRECTIONS_URL,
+      label: "Get Directions",
+      icon: MapPin,
+      external: true,
+    },
     { href: SITE.phoneHref, label: "Call Us", icon: Phone },
     { href: SITE.reservationUrl, label: "Email Reservations", icon: Mail },
   ];
@@ -22,16 +28,16 @@ export default function Footer() {
         <div className="pointer-events-none absolute left-1/4 top-0 h-96 w-96 rounded-full bg-[var(--mocha)]/10 blur-[120px]" />
         <div className="pointer-events-none absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-[var(--caramel)]/5 blur-[120px]" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6">
-          <div className="mb-20 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="mb-16 grid grid-cols-1 gap-10 sm:mb-20 sm:gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <img
                   src="/logo.png"
                   alt="Maati Art Cafe logo"
-                  className="h-12 w-12 object-contain"
+                  className="h-10 w-10 object-contain sm:h-12 sm:w-12"
                 />
-                <span className="font-serif text-2xl font-bold tracking-wide">
+                <span className="font-serif text-xl font-bold tracking-wide sm:text-2xl">
                   {SITE.name}
                 </span>
               </div>
@@ -182,18 +188,18 @@ export default function Footer() {
             </div>
           </div>
 
-          <section className="mb-20">
-            <div className="overflow-hidden rounded-[2rem] border border-[var(--caramel)]/20 bg-gradient-to-r from-[#7d3a2d] via-[var(--mocha)] to-[#c56d47] p-4 shadow-[0_30px_90px_rgba(0,0,0,0.35)] md:rounded-[2.5rem] md:p-5">
-              <div className="mb-4 flex flex-col gap-3 px-2 text-[var(--cream)] md:flex-row md:items-center md:justify-between md:px-3">
+          <section className="mb-16 sm:mb-20">
+            <div className="overflow-hidden rounded-[2rem] border border-[var(--caramel)]/20 bg-gradient-to-r from-[#7d3a2d] via-[var(--mocha)] to-[#c56d47] p-3 shadow-[0_30px_90px_rgba(0,0,0,0.35)] sm:p-4 md:rounded-[2.5rem] md:p-5">
+              <div className="mb-4 flex flex-col gap-3 px-1 text-[var(--cream)] sm:px-2 md:flex-row md:items-center md:justify-between md:px-3">
                 <div>
                   <p className="text-xs uppercase tracking-[0.35em] text-[var(--latte)]/80">
                     Find Us
                   </p>
-                  <h3 className="mt-2 font-serif text-3xl md:text-4xl">
+                  <h3 className="mt-2 font-serif text-2xl sm:text-3xl md:text-4xl">
                     Maati Art Cafe on the Map
                   </h3>
                 </div>
-                <div className="flex items-center gap-2 self-start rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-[var(--cream)]/90 backdrop-blur-md">
+                <div className="flex items-center gap-2 self-start rounded-full border border-white/10 bg-white/10 px-3 py-2 text-xs font-medium text-[var(--cream)]/90 backdrop-blur-md sm:px-4 sm:text-sm">
                   <MapPin size={16} className="shrink-0 text-[var(--latte)]" />
                   <span>Kalyani, West Bengal, Pin - 741235</span>
                 </div>
@@ -209,7 +215,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
-                  className="absolute left-4 top-4 z-20 inline-flex items-center gap-2 rounded-xl bg-[var(--cream)] px-4 py-3 text-sm font-semibold text-[var(--espresso)] shadow-lg"
+                  className="absolute left-3 top-3 z-20 inline-flex items-center gap-2 rounded-xl bg-[var(--cream)] px-3 py-2 text-xs font-semibold text-[var(--espresso)] shadow-lg sm:left-4 sm:top-4 sm:px-4 sm:py-3 sm:text-sm"
                 >
                   <span>Open in Maps</span>
                   <ArrowUpRight size={16} />
@@ -221,17 +227,17 @@ export default function Footer() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   allowFullScreen
-                  className="block h-[320px] w-full border-0 md:h-[430px]"
+                  className="block h-[260px] w-full border-0 sm:h-[320px] md:h-[430px]"
                 />
               </div>
             </div>
           </section>
 
-          <div className="flex flex-col items-center justify-between gap-4 border-t border-[var(--mocha)]/30 pt-8 text-xs font-medium uppercase tracking-widest text-[var(--latte)]/60 md:flex-row">
-            <p>
+          <div className="flex flex-col items-center justify-between gap-3 border-t border-[var(--mocha)]/30 pt-8 text-center text-xs font-medium uppercase tracking-widest text-[var(--latte)]/60 md:flex-row md:gap-4 md:text-left">
+            <p className="max-w-[18rem] md:max-w-none">
               © {currentYear} {SITE.name}. All rights reserved.
             </p>
-            <div className="flex gap-8">
+            <div className="flex flex-wrap justify-center gap-5 sm:gap-8">
               <a
                 href="/about"
                 className="transition-colors hover:text-[var(--cream)]"

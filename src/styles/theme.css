@@ -136,6 +136,7 @@
 
   body {
     @apply bg-background text-foreground;
+    position: relative;
   }
 
   /**
@@ -152,6 +153,7 @@
     font-size: var(--font-size);
     /* Hidden system scrollbar for Firefox */
     scrollbar-width: none;
+    position: relative;
   }
 
   h1 {

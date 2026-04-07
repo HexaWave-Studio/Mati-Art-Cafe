@@ -16,7 +16,7 @@ export default function Menu() {
       : menuData.filter((item) => item.category === selectedCategory);
 
   return (
-    <div className="relative min-h-screen overflow-hidden px-6 pb-20 pt-24">
+    <div className="relative min-h-screen overflow-hidden px-4 pb-16 pt-20 sm:px-6 sm:pb-20 sm:pt-24">
       <FloatingParticles />
 
       <div className="fixed inset-0 -z-10 bg-gradient-to-br from-[var(--cream)] via-[var(--latte)] to-[var(--cream)]" />
@@ -27,15 +27,15 @@ export default function Menu() {
         transition={{ duration: 0.8 }}
         className="relative z-10 mx-auto max-w-7xl"
       >
-        <header className="mb-16 text-center">
+        <header className="mb-12 text-center sm:mb-16">
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--caramel)]/20 bg-[var(--mocha)]/10 px-6 py-3 backdrop-blur-sm"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--caramel)]/20 bg-[var(--mocha)]/10 px-4 py-2.5 backdrop-blur-sm sm:px-6 sm:py-3"
           >
             <Sparkles className="text-[var(--caramel)]" size={20} />
-            <span className="text-sm tracking-wider text-[var(--mocha)]">
+            <span className="text-xs tracking-[0.2em] text-[var(--mocha)] sm:text-sm sm:tracking-wider">
               CURATED SELECTIONS
             </span>
           </motion.div>
@@ -45,7 +45,7 @@ export default function Menu() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mb-6 font-serif text-6xl text-[var(--espresso)] md:text-7xl"
+            className="mb-4 font-serif text-5xl text-[var(--espresso)] sm:mb-6 sm:text-6xl md:text-7xl"
           >
             Our Menu
           </motion.h1>
@@ -54,7 +54,7 @@ export default function Menu() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
-            className="mx-auto max-w-3xl text-xl leading-relaxed text-[var(--coffee-light)]"
+            className="mx-auto max-w-3xl text-lg leading-relaxed text-[var(--coffee-light)] sm:text-xl"
           >
             Explore artisan coffee, espresso drinks, breakfast favorites,
             pastries, and desserts served in handcrafted ceramics at Maati Art
@@ -62,11 +62,14 @@ export default function Menu() {
           </motion.p>
         </header>
 
-        <section aria-labelledby="menu-categories-title" className="mb-20">
+        <section
+          aria-labelledby="menu-categories-title"
+          className="mb-16 sm:mb-20"
+        >
           <h2 id="menu-categories-title" className="sr-only">
             Menu categories
           </h2>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {menuCategories.map((category, index) => (
               <motion.button
                 key={category}
@@ -76,7 +79,7 @@ export default function Menu() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.08, y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                className={`relative rounded-full px-8 py-4 transition-all ${
+                className={`relative rounded-full px-6 py-3 transition-all sm:px-8 sm:py-4 ${
                   selectedCategory === category
                     ? "text-[var(--cream)] shadow-2xl"
                     : "bg-white/70 text-[var(--coffee-dark)] shadow-lg backdrop-blur-sm hover:bg-white"
@@ -107,7 +110,7 @@ export default function Menu() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3"
+              className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3"
             >
               {filteredMenu.map((item, index) => (
                 <motion.article
@@ -174,14 +177,16 @@ export default function Menu() {
                       animate={{ scale: 1, rotate: 0 }}
                       transition={{ delay: index * 0.08 + 0.3, type: "spring" }}
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="absolute right-6 top-6 rounded-full border-2 border-white/30 bg-gradient-to-br from-[var(--caramel)] to-[var(--mocha)] px-5 py-3 text-white shadow-2xl backdrop-blur-sm"
+                      className="absolute right-4 top-4 rounded-full border-2 border-white/30 bg-gradient-to-br from-[var(--caramel)] to-[var(--mocha)] px-4 py-2 text-white shadow-2xl backdrop-blur-sm sm:right-6 sm:top-6 sm:px-5 sm:py-3"
                     >
-                      <span className="text-lg font-medium">{item.price}</span>
+                      <span className="text-base font-medium sm:text-lg">
+                        {item.price}
+                      </span>
                     </motion.div>
                   </div>
 
-                  <div className="p-8">
-                    <h3 className="mb-3 font-serif text-3xl text-[var(--espresso)] transition-colors group-hover:text-[var(--mocha)]">
+                  <div className="p-6 sm:p-8">
+                    <h3 className="mb-3 font-serif text-2xl text-[var(--espresso)] transition-colors group-hover:text-[var(--mocha)] sm:text-3xl">
                       {item.name}
                     </h3>
 
@@ -227,31 +232,31 @@ export default function Menu() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
-          className="mt-32 text-center"
+          className="mt-20 text-center sm:mt-32"
           aria-labelledby="menu-visit-title"
         >
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--mocha)] to-[var(--espresso)] p-16 shadow-2xl backdrop-blur-xl">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[var(--mocha)] to-[var(--espresso)] p-8 shadow-2xl backdrop-blur-xl sm:p-12 md:p-16">
             <div className="absolute left-10 top-10 h-20 w-20 rounded-full bg-[var(--caramel)]/20 blur-2xl" />
             <div className="absolute bottom-10 right-10 h-32 w-32 rounded-full bg-[var(--caramel)]/20 blur-3xl" />
 
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--caramel)]/10"
+              className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--caramel)]/10 sm:h-64 sm:w-64"
             />
 
             <div className="relative z-10">
               <h2
                 id="menu-visit-title"
-                className="mb-6 font-serif text-4xl text-[var(--cream)]"
+                className="mb-4 font-serif text-3xl text-[var(--cream)] sm:mb-6 sm:text-4xl"
               >
                 Can&apos;t Decide?
               </h2>
-              <p className="mx-auto mb-8 max-w-2xl text-lg text-[var(--latte)]">
+              <p className="mx-auto mb-8 max-w-2xl text-base text-[var(--latte)] sm:text-lg">
                 Let our baristas guide you to the right roast, drink, or dessert
                 pairing when you visit Maati Art Cafe.
               </p>
-              <div className="flex flex-wrap justify-center gap-4">
+              <div className="flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <motion.a
                   href={SITE.mapUrl}
                   target="_blank"
@@ -261,7 +266,7 @@ export default function Menu() {
                     boxShadow: "0 20px 60px rgba(212, 165, 116, 0.4)",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--latte)] px-12 py-5 text-lg font-medium text-[var(--espresso)] shadow-2xl"
+                  className="w-full rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--latte)] px-8 py-4 text-base font-medium text-[var(--espresso)] shadow-2xl sm:w-auto sm:px-12 sm:py-5 sm:text-lg"
                 >
                   Visit Us Today
                 </motion.a>
@@ -269,7 +274,7 @@ export default function Menu() {
                   href={SITE.reservationUrl}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="rounded-full border border-[var(--caramel)]/40 px-12 py-5 text-lg font-medium text-[var(--cream)]"
+                  className="w-full rounded-full border border-[var(--caramel)]/40 px-8 py-4 text-base font-medium text-[var(--cream)] sm:w-auto sm:px-12 sm:py-5 sm:text-lg"
                 >
                   Reserve by Email
                 </motion.a>

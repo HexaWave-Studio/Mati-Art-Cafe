@@ -29,15 +29,27 @@ export default function Home() {
     offset: ["start end", "end start"],
   });
 
-  const menuScale = useTransform(menuProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.95]);
-  const menuOpacity = useTransform(menuProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0.8]);
+  const menuScale = useTransform(
+    menuProgress,
+    [0, 0.2, 0.8, 1],
+    [0.8, 1, 1, 0.95],
+  );
+  const menuOpacity = useTransform(
+    menuProgress,
+    [0, 0.2, 0.8, 1],
+    [0, 1, 1, 0.8],
+  );
 
   const { scrollYProgress: drinksProgress } = useScroll({
     target: drinksRef,
     offset: ["start end", "end start"],
   });
 
-  const drinksScale = useTransform(drinksProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.95]);
+  const drinksScale = useTransform(
+    drinksProgress,
+    [0, 0.2, 0.8, 1],
+    [0.8, 1, 1, 0.95],
+  );
   const drinksY = useTransform(drinksProgress, [0, 0.2], [100, 0]);
 
   const { scrollYProgress: galleryProgress } = useScroll({
@@ -45,14 +57,22 @@ export default function Home() {
     offset: ["start end", "end start"],
   });
 
-  const galleryScale = useTransform(galleryProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.95]);
+  const galleryScale = useTransform(
+    galleryProgress,
+    [0, 0.2, 0.8, 1],
+    [0.8, 1, 1, 0.95],
+  );
 
   const { scrollYProgress: reviewsProgress } = useScroll({
     target: reviewsRef,
     offset: ["start end", "end start"],
   });
 
-  const reviewsScale = useTransform(reviewsProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.95]);
+  const reviewsScale = useTransform(
+    reviewsProgress,
+    [0, 0.2, 0.8, 1],
+    [0.8, 1, 1, 0.95],
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,25 +81,29 @@ export default function Home() {
   const menuItems = [
     {
       title: "Coffee",
-      image: "https://images.unsplash.com/photo-1764361276489-79b17d9a8782?w=800",
+      image:
+        "https://images.unsplash.com/photo-1764361276489-79b17d9a8782?w=800",
       description: "Artisan coffee from around the world",
       alt: "Freshly brewed coffee at Maati Art Cafe",
     },
     {
       title: "Desserts",
-      image: "https://images.unsplash.com/photo-1761637604549-4943604df127?w=800",
+      image:
+        "https://images.unsplash.com/photo-1761637604549-4943604df127?w=800",
       description: "Handcrafted pastries and cakes",
       alt: "Handcrafted desserts plated at Maati Art Cafe",
     },
     {
       title: "Breakfast",
-      image: "https://images.unsplash.com/photo-1769264963680-95a86383a483?w=800",
+      image:
+        "https://images.unsplash.com/photo-1769264963680-95a86383a483?w=800",
       description: "Start your day right",
       alt: "Breakfast plate served in the cafe",
     },
     {
       title: "Signature Drinks",
-      image: "https://images.unsplash.com/photo-1769970630294-924a48b99cb0?w=800",
+      image:
+        "https://images.unsplash.com/photo-1769970630294-924a48b99cb0?w=800",
       description: "Exclusive cafe creations",
       alt: "Signature cold coffee creation at Maati Art Cafe",
     },
@@ -89,28 +113,32 @@ export default function Home() {
     {
       name: "Golden Latte",
       price: "$6.50",
-      image: "https://images.unsplash.com/photo-1769138885124-9d9e52bb3c8a?w=600",
+      image:
+        "https://images.unsplash.com/photo-1769138885124-9d9e52bb3c8a?w=600",
       description: "Turmeric, honey, and steamed milk",
       alt: "Golden latte served in a handcrafted ceramic cup",
     },
     {
       name: "Espresso Martini",
       price: "$8.00",
-      image: "https://images.unsplash.com/photo-1762657433581-15773c721a42?w=600",
+      image:
+        "https://images.unsplash.com/photo-1762657433581-15773c721a42?w=600",
       description: "Cold brew, vodka, and vanilla",
       alt: "Espresso martini styled signature drink",
     },
     {
       name: "Caramel Cloud",
       price: "$7.00",
-      image: "https://images.unsplash.com/photo-1665119497036-496bcf37425b?w=600",
+      image:
+        "https://images.unsplash.com/photo-1665119497036-496bcf37425b?w=600",
       description: "Cold foam with caramel drizzle",
       alt: "Caramel cloud iced coffee with cold foam",
     },
     {
       name: "Mocha Velvet",
       price: "$6.00",
-      image: "https://images.unsplash.com/photo-1712000155326-708e81be975e?w=600",
+      image:
+        "https://images.unsplash.com/photo-1712000155326-708e81be975e?w=600",
       description: "Dark chocolate and espresso",
       alt: "Mocha velvet coffee with dark chocolate notes",
     },
@@ -160,7 +188,7 @@ export default function Home() {
       <motion.section
         ref={heroRef}
         style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-        className="sticky top-0 flex h-screen items-center justify-center overflow-hidden"
+        className="relative sticky top-0 flex h-screen items-center justify-center overflow-hidden"
         aria-labelledby="home-hero-title"
       >
         <div className="absolute inset-0">
@@ -215,7 +243,7 @@ export default function Home() {
           />
         ))}
 
-        <div className="relative z-20 mt-12 max-w-5xl px-6 pt-24 text-center md:mt-16">
+        <div className="relative z-20 mt-12 max-w-5xl px-4 pt-20 text-center sm:px-6 sm:pt-24 md:mt-16">
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
@@ -224,17 +252,17 @@ export default function Home() {
             <motion.div
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 3, repeat: Infinity }}
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-[var(--caramel)]/30 bg-[var(--mocha)]/40 px-6 py-3 backdrop-blur-md"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-[var(--caramel)]/30 bg-[var(--mocha)]/40 px-4 py-2.5 backdrop-blur-md sm:mb-8 sm:px-6 sm:py-3"
             >
               <Sparkles className="text-[var(--caramel)]" size={20} />
-              <span className="text-sm tracking-wider text-[var(--cream)]">
+              <span className="text-xs tracking-[0.2em] text-[var(--cream)] sm:text-sm sm:tracking-wider">
                 ARTISAN COFFEE EXPERIENCE
               </span>
             </motion.div>
 
             <h1
               id="home-hero-title"
-              className="mb-8 font-serif text-6xl leading-tight text-[var(--cream)] md:text-8xl"
+              className="mb-6 font-serif text-5xl leading-[0.95] text-[var(--cream)] sm:mb-8 sm:text-6xl sm:leading-tight md:text-8xl"
             >
               Experience Coffee
               <br />
@@ -243,12 +271,12 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="mx-auto mb-12 max-w-3xl text-xl leading-relaxed text-[var(--latte)] md:text-2xl">
+            <p className="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-[var(--latte)] sm:mb-12 sm:text-xl md:text-2xl">
               Where artisan coffee, handcrafted ceramics, and gallery-inspired
               interiors come together in the heart of Brooklyn.
             </p>
 
-            <div className="flex flex-wrap justify-center gap-6">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               <motion.a
                 href="/menu"
                 whileHover={{
@@ -256,7 +284,7 @@ export default function Home() {
                   boxShadow: "0 20px 60px rgba(212, 165, 116, 0.5)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative overflow-hidden rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] px-10 py-5 text-white"
+                className="group relative w-full max-w-xs overflow-hidden rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] px-8 py-4 text-white sm:w-auto sm:px-10 sm:py-5"
               >
                 <span className="relative z-10 font-medium">Explore Menu</span>
                 <motion.div
@@ -271,7 +299,7 @@ export default function Home() {
                 href="#visit"
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
-                className="rounded-full border-2 border-[var(--cream)] bg-white/10 px-10 py-5 text-[var(--cream)] backdrop-blur-md transition-colors hover:bg-white/20"
+                className="w-full max-w-xs rounded-full border-2 border-[var(--cream)] bg-white/10 px-8 py-4 text-[var(--cream)] backdrop-blur-md transition-colors hover:bg-white/20 sm:w-auto sm:px-10 sm:py-5"
               >
                 Visit Us
               </motion.a>
@@ -283,7 +311,7 @@ export default function Home() {
                 opacity: [1, 0.5, 1],
               }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="mt-16 flex w-full justify-center"
+              className="mt-10 flex w-full justify-center sm:mt-16"
             >
               <ChevronDown
                 className="text-[var(--caramel)] drop-shadow-lg"
@@ -297,7 +325,7 @@ export default function Home() {
       <motion.section
         ref={menuRef}
         style={{ scale: menuScale, opacity: menuOpacity }}
-        className="sticky top-0 z-10 flex min-h-screen flex-col justify-center rounded-t-[50px] bg-gradient-to-b from-[var(--cream)] via-[var(--latte)] to-[var(--cream)] px-4 py-16 shadow-2xl lg:py-20"
+        className="relative sticky top-0 z-10 flex min-h-screen flex-col justify-center rounded-t-[36px] bg-gradient-to-b from-[var(--cream)] via-[var(--latte)] to-[var(--cream)] px-4 py-8 shadow-2xl sm:rounded-t-[50px] sm:px-6 sm:py-16 lg:py-20"
         aria-labelledby="home-menu-title"
       >
         <motion.div
@@ -305,9 +333,9 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mx-auto w-full max-w-7xl origin-center scale-90 lg:scale-95"
+          className="mx-auto w-full max-w-7xl origin-top scale-[0.92] sm:w-full sm:origin-center sm:scale-90 lg:scale-95"
         >
-          <div className="mb-10 text-center md:mb-12">
+          <div className="mb-6 text-center md:mb-12">
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -315,23 +343,23 @@ export default function Home() {
               viewport={{ once: true }}
               className="mb-6 inline-block"
             >
-              <span className="text-sm uppercase tracking-[0.3em] text-[var(--caramel)]">
+              <span className="text-xs uppercase tracking-[0.24em] text-[var(--caramel)] sm:text-sm sm:tracking-[0.3em]">
                 Curated Selection
               </span>
             </motion.div>
             <h2
               id="home-menu-title"
-              className="mb-6 font-serif text-5xl text-[var(--espresso)] md:text-7xl"
+              className="mb-4 font-serif text-4xl text-[var(--espresso)] sm:mb-6 sm:text-5xl md:text-7xl"
             >
               Our Menu
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-[var(--coffee-light)]">
+            <p className="mx-auto max-w-2xl text-sm text-[var(--coffee-light)] sm:text-lg">
               Every item is crafted with quality ingredients, expressive
               plating, and the warmth of a neighborhood cafe.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
             {menuItems.map((item, index) => (
               <motion.article
                 key={item.title}
@@ -346,7 +374,7 @@ export default function Home() {
                   scale: 1.05,
                 }}
                 style={{ transformStyle: "preserve-3d" }}
-                className="group relative overflow-hidden rounded-3xl bg-white shadow-xl"
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-xl sm:rounded-3xl"
               >
                 <div className="relative aspect-square overflow-hidden">
                   <motion.div
@@ -374,15 +402,17 @@ export default function Home() {
                   />
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 translate-y-20 p-6 text-white transition-transform duration-500 group-hover:translate-y-0">
-                  <h3 className="mb-3 font-serif text-3xl">{item.title}</h3>
-                  <p className="text-sm text-[var(--latte)] opacity-90">
+                <div className="absolute bottom-0 left-0 right-0 translate-y-16 p-3 text-white transition-transform duration-500 group-hover:translate-y-0 sm:translate-y-20 sm:p-6">
+                  <h3 className="mb-1 font-serif text-lg sm:mb-3 sm:text-3xl">
+                    {item.title}
+                  </h3>
+                  <p className="hidden text-sm text-[var(--latte)] opacity-90 sm:block">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-6 transition-opacity duration-300 group-hover:opacity-0">
-                  <h3 className="font-serif text-2xl text-[var(--espresso)]">
+                <div className="absolute bottom-0 left-0 right-0 p-3 transition-opacity duration-300 group-hover:opacity-0 sm:p-6">
+                  <h3 className="font-serif text-base text-[var(--espresso)] sm:text-2xl">
                     {item.title}
                   </h3>
                 </div>
@@ -397,13 +427,13 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
             viewport={{ once: true }}
-            className="mt-16 text-center"
+            className="mt-8 text-center sm:mt-16"
           >
             <motion.a
               href="/menu"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block rounded-full bg-[var(--mocha)] px-10 py-4 text-[var(--cream)] shadow-lg transition-shadow hover:shadow-2xl"
+              className="inline-block rounded-full bg-[var(--mocha)] px-8 py-4 text-[var(--cream)] shadow-lg transition-shadow hover:shadow-2xl sm:px-10"
             >
               View Full Menu
             </motion.a>
@@ -414,7 +444,7 @@ export default function Home() {
       <motion.section
         ref={drinksRef}
         style={{ scale: drinksScale, y: drinksY }}
-        className="sticky top-0 z-20 flex min-h-screen flex-col justify-center rounded-t-[50px] bg-gradient-to-br from-[var(--mocha)] via-[var(--coffee-dark)] to-[var(--espresso)] px-4 py-16 shadow-2xl lg:py-20"
+        className="relative sticky top-0 z-20 flex min-h-screen flex-col justify-center rounded-t-[36px] bg-gradient-to-br from-[var(--mocha)] via-[var(--coffee-dark)] to-[var(--espresso)] px-4 py-8 shadow-2xl sm:rounded-t-[50px] sm:px-6 sm:py-16 lg:py-20"
         aria-labelledby="signature-drinks-title"
       >
         <motion.div
@@ -422,9 +452,9 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mx-auto w-full max-w-7xl origin-center scale-90 lg:scale-95"
+          className="mx-auto w-full max-w-7xl origin-top scale-[0.92] sm:w-full sm:origin-center sm:scale-90 lg:scale-95"
         >
-          <div className="mb-10 text-center md:mb-12">
+          <div className="mb-6 text-center md:mb-12">
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -432,23 +462,23 @@ export default function Home() {
               viewport={{ once: true }}
               className="mb-6 inline-block"
             >
-              <span className="text-sm uppercase tracking-[0.3em] text-[var(--caramel)]">
+              <span className="text-xs uppercase tracking-[0.24em] text-[var(--caramel)] sm:text-sm sm:tracking-[0.3em]">
                 Exclusive
               </span>
             </motion.div>
             <h2
               id="signature-drinks-title"
-              className="mb-6 font-serif text-5xl text-[var(--cream)] md:text-7xl"
+              className="mb-4 font-serif text-4xl text-[var(--cream)] sm:mb-6 sm:text-5xl md:text-7xl"
             >
               Signature Creations
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-[var(--latte)]">
+            <p className="mx-auto max-w-2xl text-sm text-[var(--latte)] sm:text-lg">
               Handcrafted coffee and cafe creations that pair beautifully with
               Maati&apos;s ceramic-led presentation.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-8 md:grid-cols-2 lg:grid-cols-4">
             {signatureDrinks.map((drink, index) => (
               <motion.article
                 key={drink.name}
@@ -464,11 +494,11 @@ export default function Home() {
                 style={{ transformStyle: "preserve-3d" }}
                 className="group relative"
               >
-                <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-6 shadow-2xl backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/10 p-3 shadow-2xl backdrop-blur-xl sm:rounded-3xl sm:p-6">
                   <motion.div
                     whileHover={{ scale: 1.15, rotate: 5 }}
                     transition={{ duration: 0.5 }}
-                    className="mb-6 aspect-square overflow-hidden rounded-2xl"
+                    className="mb-3 aspect-square overflow-hidden rounded-xl sm:mb-6 sm:rounded-2xl"
                   >
                     <ImageWithFallback
                       src={drink.image}
@@ -487,13 +517,13 @@ export default function Home() {
                     }}
                   />
 
-                  <h3 className="mb-2 font-serif text-2xl text-[var(--cream)]">
+                  <h3 className="mb-1 font-serif text-base text-[var(--cream)] sm:mb-2 sm:text-2xl">
                     {drink.name}
                   </h3>
-                  <p className="mb-4 text-sm text-[var(--latte)]">
+                  <p className="mb-2 hidden text-sm text-[var(--latte)] sm:mb-4 sm:block">
                     {drink.description}
                   </p>
-                  <p className="text-2xl text-[var(--caramel)]">
+                  <p className="text-lg text-[var(--caramel)] sm:text-2xl">
                     {drink.price}
                   </p>
                 </div>
@@ -508,7 +538,7 @@ export default function Home() {
       <motion.section
         ref={galleryRef}
         style={{ scale: galleryScale }}
-        className="sticky top-0 z-30 flex min-h-screen flex-col justify-center rounded-t-[50px] bg-gradient-to-b from-[var(--espresso)] via-[var(--coffee-dark)] to-[var(--espresso)] px-4 py-16 shadow-2xl lg:py-20"
+        className="relative sticky top-0 z-30 flex min-h-screen flex-col justify-center rounded-t-[36px] bg-gradient-to-b from-[var(--espresso)] via-[var(--coffee-dark)] to-[var(--espresso)] px-4 py-14 shadow-2xl sm:rounded-t-[50px] sm:px-6 sm:py-16 lg:py-20"
         aria-labelledby="home-gallery-title"
       >
         <motion.div
@@ -516,7 +546,7 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mx-auto w-full max-w-7xl origin-center scale-90 lg:scale-95"
+          className="mx-auto w-full max-w-7xl origin-center scale-100 sm:scale-90 lg:scale-95"
         >
           <div className="mb-10 text-center md:mb-12">
             <motion.div
@@ -526,23 +556,23 @@ export default function Home() {
               viewport={{ once: true }}
               className="mb-6 inline-block"
             >
-              <span className="text-sm uppercase tracking-[0.3em] text-[var(--caramel)]">
+              <span className="text-xs uppercase tracking-[0.24em] text-[var(--caramel)] sm:text-sm sm:tracking-[0.3em]">
                 Atmosphere
               </span>
             </motion.div>
             <h2
               id="home-gallery-title"
-              className="mb-6 font-serif text-5xl text-[var(--cream)] md:text-7xl"
+              className="mb-4 font-serif text-4xl text-[var(--cream)] sm:mb-6 sm:text-5xl md:text-7xl"
             >
               Ambience
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-[var(--latte)]">
+            <p className="mx-auto max-w-2xl text-base text-[var(--latte)] sm:text-lg">
               Browse the warm interiors, plated desserts, and coffee moments
               that shape the gallery-inspired feel of Maati Art Cafe.
             </p>
           </div>
 
-          <div className="mb-12 grid grid-cols-2 gap-6 md:grid-cols-4">
+          <div className="mb-12 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4">
             {galleryPreview.map((image, index) => (
               <motion.figure
                 key={image.url}
@@ -571,7 +601,7 @@ export default function Home() {
               href="/gallery"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] px-10 py-4 text-white shadow-lg"
+              className="inline-block rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] px-8 py-4 text-white shadow-lg sm:px-10"
             >
               View Full Gallery
             </motion.a>
@@ -582,7 +612,7 @@ export default function Home() {
       <motion.section
         ref={reviewsRef}
         style={{ scale: reviewsScale }}
-        className="sticky top-0 z-40 flex min-h-screen items-center rounded-t-[50px] bg-gradient-to-br from-[var(--cream)] via-[var(--latte)] to-[var(--cream)] px-4 py-16 shadow-2xl lg:py-20"
+        className="relative sticky top-0 z-40 flex min-h-screen items-center rounded-t-[36px] bg-gradient-to-br from-[var(--cream)] via-[var(--latte)] to-[var(--cream)] px-4 py-14 shadow-2xl sm:rounded-t-[50px] sm:px-6 sm:py-16 lg:py-20"
         aria-labelledby="guest-reviews-title"
       >
         <motion.div
@@ -590,16 +620,16 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mx-auto w-full max-w-7xl origin-center scale-90 lg:scale-95"
+          className="mx-auto w-full max-w-7xl origin-center scale-100 sm:scale-90 lg:scale-95"
         >
           <h2
             id="guest-reviews-title"
-            className="mb-16 text-center font-serif text-5xl text-[var(--espresso)] drop-shadow-sm md:text-6xl"
+            className="mb-10 text-center font-serif text-4xl text-[var(--espresso)] drop-shadow-sm sm:mb-16 sm:text-5xl md:text-6xl"
           >
             What Our Guests Say
           </h2>
 
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 sm:gap-12 md:grid-cols-3">
             {reviews.map((review, index) => (
               <motion.blockquote
                 key={review.name}
@@ -612,7 +642,7 @@ export default function Home() {
                   scale: 1.05,
                   boxShadow: "0 40px 80px rgba(0,0,0,0.1)",
                 }}
-                className="rounded-[40px] border border-white/50 bg-white/40 p-12 shadow-2xl backdrop-blur-xl transition-shadow"
+                className="rounded-[32px] border border-white/50 bg-white/40 p-8 shadow-2xl backdrop-blur-xl transition-shadow sm:rounded-[40px] sm:p-10 md:p-12"
               >
                 <div className="mb-8 flex gap-1">
                   {[...Array(review.rating)].map((_, i) => (
@@ -630,7 +660,7 @@ export default function Home() {
                     </motion.div>
                   ))}
                 </div>
-                <p className="mb-10 font-serif text-xl italic leading-relaxed text-[var(--espresso)]">
+                <p className="mb-8 font-serif text-lg italic leading-relaxed text-[var(--espresso)] sm:mb-10 sm:text-xl">
                   &quot;{review.text}&quot;
                 </p>
                 <footer className="flex items-center gap-4">
@@ -646,7 +676,7 @@ export default function Home() {
       </motion.section>
 
       {/* Location Section - Enhanced */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[var(--espresso)] via-[var(--coffee-dark)] to-[var(--espresso)] px-6 pb-24 pt-32 z-40 md:pb-32">
+      <section className="relative z-40 overflow-hidden bg-gradient-to-b from-[var(--espresso)] via-[var(--coffee-dark)] to-[var(--espresso)] px-4 pb-20 pt-24 sm:px-6 sm:pb-24 sm:pt-32 md:pb-32">
         {/* Decorative elements */}
         <motion.div
           className="absolute top-10 left-10 w-32 h-32 bg-[var(--caramel)] rounded-full opacity-5 blur-3xl"
@@ -665,23 +695,23 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-w-5xl mx-auto relative z-10"
+          className="relative z-10 mx-auto max-w-5xl"
         >
-          <div className="text-center mb-16">
+          <div className="mb-12 text-center sm:mb-16">
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               whileInView={{ scale: 1, rotate: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="inline-block mb-8"
+              className="mb-6 inline-block sm:mb-8"
             >
               <MapPin className="mx-auto text-[var(--caramel)]" size={64} />
             </motion.div>
 
-            <h2 className="font-serif text-5xl md:text-6xl text-[var(--cream)] mb-6">
+            <h2 className="mb-4 font-serif text-4xl text-[var(--cream)] sm:mb-6 sm:text-5xl md:text-6xl">
               Visit Our Café
             </h2>
-            <p className="text-[var(--latte)] text-lg mb-4">
+            <p className="mb-4 text-base text-[var(--latte)] sm:text-lg">
               123 Coffee Street, Brooklyn, NY 11201
             </p>
             <p className="text-[var(--caramel)] text-sm tracking-wider uppercase">
@@ -694,9 +724,9 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="backdrop-blur-xl bg-white/10 p-8 rounded-3xl border border-[var(--caramel)]/30 mb-12"
+            className="mb-10 rounded-3xl border border-[var(--caramel)]/30 bg-white/10 p-6 backdrop-blur-xl sm:mb-12 sm:p-8"
           >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div className="mb-8 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
               {[
                 { label: "Monday - Friday", value: "7:00 AM - 9:00 PM" },
                 { label: "Saturday", value: "8:00 AM - 10:00 PM" },
@@ -710,7 +740,7 @@ export default function Home() {
                   viewport={{ once: true }}
                   className="text-center"
                 >
-                  <p className="text-[var(--latte)] text-sm uppercase tracking-wider mb-2">
+                  <p className="mb-2 text-sm uppercase tracking-wider text-[var(--latte)]">
                     {hours.label}
                   </p>
                   <p className="text-[var(--cream)] text-lg font-serif">
@@ -730,7 +760,7 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="flex gap-6 justify-center flex-wrap">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap sm:gap-6">
             <motion.a
               href="https://maps.app.goo.gl/oFR8L1Mm8uqFAiLV9"
               target="_blank"
@@ -744,7 +774,7 @@ export default function Home() {
                 boxShadow: "0 20px 60px rgba(212, 165, 116, 0.5)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] text-white rounded-full shadow-lg font-medium"
+              className="w-full rounded-full bg-gradient-to-r from-[var(--caramel)] to-[var(--mocha)] px-8 py-4 text-center font-medium text-white shadow-lg sm:w-auto sm:px-10"
             >
               📍 Get Directions
             </motion.a>
@@ -758,7 +788,7 @@ export default function Home() {
                 backgroundColor: "rgba(255, 255, 255, 0.2)",
               }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 border-2 border-[var(--cream)] text-[var(--cream)] rounded-full backdrop-blur-sm bg-white/10 font-medium transition-colors"
+              className="w-full rounded-full border-2 border-[var(--cream)] bg-white/10 px-8 py-4 font-medium text-[var(--cream)] backdrop-blur-sm transition-colors sm:w-auto sm:px-10"
             >
               📅 Reserve a Table
             </motion.button>
@@ -769,7 +799,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
             viewport={{ once: true }}
-            className="relative z-10 mt-24 border-t border-[var(--caramel)]/20 pt-20 text-center md:mt-28 md:pt-24"
+            className="relative z-10 mt-20 border-t border-[var(--caramel)]/20 pt-16 text-center sm:mt-24 sm:pt-20 md:mt-28 md:pt-24"
           >
             <motion.div
               className="absolute right-0 top-0 h-80 w-80 rounded-full bg-[var(--caramel)] opacity-10 blur-3xl"
@@ -783,10 +813,10 @@ export default function Home() {
             />
 
             <div className="relative mx-auto max-w-2xl">
-              <h2 className="mb-6 font-serif text-5xl text-[var(--cream)] md:text-6xl">
+              <h2 className="mb-4 font-serif text-4xl text-[var(--cream)] sm:mb-6 sm:text-5xl md:text-6xl">
                 Stay Updated
               </h2>
-              <p className="mb-12 text-lg text-[var(--latte)]">
+              <p className="mb-8 text-base text-[var(--latte)] sm:mb-12 sm:text-lg">
                 Get exclusive offers, new drink recipes, and coffee tips
                 delivered to your inbox
               </p>
